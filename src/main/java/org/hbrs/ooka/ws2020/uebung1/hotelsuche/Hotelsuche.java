@@ -1,6 +1,6 @@
-package org.hbrs.ooka.ws2020.uebung1.Hotelsuche;
+package org.hbrs.ooka.ws2020.uebung1.hotelsuche;
 
-import org.hbrs.ooka.ws2020.uebung1.Objects.Hotel;
+import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
 
 public interface Hotelsuche {
     public void openSession();

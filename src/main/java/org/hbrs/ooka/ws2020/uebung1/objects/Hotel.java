@@ -1,4 +1,4 @@
-package org.hbrs.ooka.ws2020.uebung1.Objects;
+package org.hbrs.ooka.ws2020.uebung1.objects;
 
 public class Hotel {
     private String name;
