@@ -1,4 +1,4 @@
-package org.hbrs.ooka.ws2020.uebung1.caching;
+package org.hbrs.ooka.ws2020.uebung1.extern;
 
 import java.util.List;
 
