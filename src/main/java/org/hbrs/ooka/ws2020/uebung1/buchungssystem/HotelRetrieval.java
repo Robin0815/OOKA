@@ -21,7 +21,7 @@ public class HotelRetrieval implements Hotelsuche {
     public Hotel[] getHotelByName (String name ) throws Exception {
         List<String> result= db.getObjects( DBAccess.HOTEL, name);
         List<Hotel> res = new ArrayList<>();
-        for( int i = 0; i<result.size(); i=i+3 ){
+        for( int i = 0; i<result.size()-2; i=i+3 ){
             res.add(new Hotel(result.get(i+1), result.get(i+2)));
         }
         Hotel[] hotelArray = new Hotel[res.size()];

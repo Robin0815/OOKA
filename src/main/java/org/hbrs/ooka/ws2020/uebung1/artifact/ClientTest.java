@@ -21,7 +21,7 @@ public class ClientTest {
 
         Hotel[] res = new Hotel[0];
         try {
-            res = hotelRetrieval.getHotelByName("Jahres");
+            res = hotelRetrieval.getHotelByName("Hotel");
         } catch (Exception e) {
             e.printStackTrace();
         }
