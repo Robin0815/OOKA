@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+//import org.postgresql.Driver;
 
 public class DBAccess {
 	
@@ -51,7 +52,7 @@ public class DBAccess {
 	
 	public void openConnection(){
 		  try {
-			DriverManager.registerDriver( new org.postgresql.Driver() ); 
+			DriverManager.registerDriver( new org.postgresql.Driver() );
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
