@@ -1,6 +1,5 @@
 package org.hbrs.ooka.ws2020.uebung1.buchungssystem;
 
-import org.hbrs.ooka.ws2020.uebung1.extern.Hotelsuche;
 import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
 
 

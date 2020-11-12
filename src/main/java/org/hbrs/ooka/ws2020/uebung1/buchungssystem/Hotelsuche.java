@@ -1,4 +1,4 @@
-package org.hbrs.ooka.ws2020.uebung1.extern;
+package org.hbrs.ooka.ws2020.uebung1.buchungssystem;
 
 import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
 
