@@ -7,8 +7,7 @@ import java.util.List;
 
 public class ClientTest {
     public static void main(String[] args){
-        HotelRetrieval hotelRetrieval = new HotelRetrieval();
-        hotelRetrieval.openSession();
+        Hotelsuche hotelSuche = new HotelRetrieval();
         /*List<Hotel> result = null;
         try {
             result  = hotelRetrieval.getHotelList();
@@ -21,7 +20,7 @@ public class ClientTest {
 
         Hotel[] res = new Hotel[0];
         try {
-            res = hotelRetrieval.getHotelByName("Hotel");
+            res = hotelSuche.getHotelByName("Hotel");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +29,6 @@ public class ClientTest {
             System.out.println(a.toString());
         }
 
-        hotelRetrieval.closeSession();
+
     }
 }
