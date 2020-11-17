@@ -1,8 +1,6 @@
 package org.hbrs.ooka.ws2020.uebung1.buchungssystem;
 
 import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class HotelRetrieval implements Hotelsuche {
     }
 
     public Hotel[] getHotelByName (String name ) throws Exception {
-        openSession();
+        /*openSession();
         List<String> result= db.getObjects( DBAccess.HOTEL, name);
         List<Hotel> res = new ArrayList<>();
         //Hotel[] res = new Hotel[result.size()/3]
@@ -27,7 +25,9 @@ public class HotelRetrieval implements Hotelsuche {
             //res[i/3] = new Hotel(result.get(i+1), result.get(i+2));
         }
         Hotel[] hotelArray = new Hotel[res.size()];
-        closeSession();
+        closeSession();*/
+        List<Hotel> res = getHotelByNameList(name);
+        Hotel[] hotelArray = new Hotel[res.size()];
         return res.toArray(hotelArray);
     }
     public List<Hotel> getHotelByNameList (String name) throws Exception {
@@ -43,6 +43,7 @@ public class HotelRetrieval implements Hotelsuche {
     public List<Hotel> getHotelList () throws Exception {
         return getHotelByNameList("*");
     }
+
     private boolean checkName( String name ){
         try {
             List<Hotel> a = getHotelByNameList(name);
