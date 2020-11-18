@@ -36,7 +36,7 @@ public class HotelRetrievalProxy implements HotelSuche {
         if (cache != null) {
             List<Hotel> cachedL = cache.getEntry(name);
             if (cachedL != null) {
-                return cachedL.toArray(new Hotel[cachedL.size()]);
+                return cachedL.toArray(new Hotel[0]);
             } else {
                 Hotel[] res = hotelRetrieval.getHotelByName(name);
                 cache.cacheResult(name, Arrays.asList(res));
