@@ -1,7 +1,6 @@
 package org.hbrs.ooka.ws2020.uebung1.buchungssystem;
 
 import org.hbrs.ooka.ws2020.uebung1.extern.Logging;
-import org.hbrs.ooka.ws2020.uebung1.extern.LoggingImp1;
 import org.hbrs.ooka.ws2020.uebung1.extern.cache.Caching;
 import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
 
@@ -10,9 +9,17 @@ import java.util.List;
 
 public class HotelRetrievalProxy implements HotelSuche {
     HotelRetrieval hotelRetrieval = new HotelRetrieval();
-    Logging log = new LoggingImp1();
+    Logging log = getLogging();
     Caching cache = getCache();
 
+    private Logging getLogging(){
+        try {
+            return new Util().LoggingProviders(true).next();
+        } catch (Exception e) {
+            System.out.println("Fehler bei Logging");
+            return null;
+        }
+    }
     private Caching getCache() {
         try {
             return new Util().CacheingProviders(true).next().create();
