@@ -2,17 +2,40 @@ package org.hbrs.ooka.ws2020.uebung1.buchungssystem;
 
 import org.hbrs.ooka.ws2020.uebung1.extern.Logging;
 import org.hbrs.ooka.ws2020.uebung1.extern.LoggingImp1;
-import org.hbrs.ooka.ws2020.uebung1.extern.client.Util;
+import org.hbrs.ooka.ws2020.uebung1.extern.cache.Caching;
 import org.hbrs.ooka.ws2020.uebung1.objects.Hotel;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class HotelRetrievalProxy implements Hotelsuche{
+public class HotelRetrievalProxy implements HotelSuche {
     HotelRetrieval hotelRetrieval = new HotelRetrieval();
     Logging log = new LoggingImp1();
+    Caching cache = getCache();
+
+    private Caching getCache() {
+        try {
+            return new Util().CacheingProviders(true).next().create();
+        } catch (Exception e) {
+            System.out.println("Fehler bei dem Cache, kein Cache erzeugt");
+            return null;
+        }
+    }
+
     @Override
     public Hotel[] getHotelByName(String name) throws Exception {
-        log.log("getHotelByName", name);
+        log.log("getHotelByName()", name);
+        try{
+        if (cache != null) {
+            List<Hotel> cachedL = cache.getEntry(name);
+            if (cachedL != null) {
+                return cachedL.toArray(new Hotel[cachedL.size()]);
+            } else {
+                Hotel[] res = hotelRetrieval.getHotelByName(name);
+                cache.cacheResult(name, Arrays.asList(res));
+                return res;
+            }
+        }}catch (Exception e){System.out.println("Fehler beim Caching");}
         return hotelRetrieval.getHotelByName(name);
     }
 
@@ -21,4 +44,13 @@ public class HotelRetrievalProxy implements Hotelsuche{
         return hotelRetrieval.getHotelList();
     }
 
+    @Override
+    public void openSession() {
+        hotelRetrieval.openSession();
+    }
+
+    @Override
+    public void closeSession() {
+        hotelRetrieval.closeSession();
+    }
 }
